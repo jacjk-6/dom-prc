@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      list-style: none;
+      width: 1000px;
+      height:50px;
+    }
+    #uu{
+      position: relative;
+      z-index: 9;
+    }
+    #box{
+      width: 1000px;
+      height:50px;
+      border:3px double  peru ;
+      background-color: papayawhip;
+      position: relative;
+      top: 100px;
+      left: 500px;
+    }
+    li{
+      float: left;
+      margin-left: 50px;
+      font-size: 20px;
+      line-height: 50px;
+      cursor: pointer;
+    }
+    #cloud{
+      display: block;
+      width: 100px;
+      height: 50px;
+      border-radius:50px;
+      background: rgba(20,200,20,1);
+      position: absolute;
+      left: 40px;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <span id="cloud"></span>
+  <ul id="uu">
+    <li>上海校区</li>
+    <li>广州校区</li>
+    <li>北京校区</li>
+    <li>天津校区</li>
+    <li>重庆校区</li>
+    <li>商务合作</li>
+    <li>联系我们</li>
+  </ul>
+</div>
+</body>
+<script src="../commn.js"></script>
+<script>
+  function hdAnimate(element,target) {
+    clearInterval(timeId);
+    var timeId=setInterval(function () {
+      var current=element.offsetLeft;
+      var step=(target-current)/10;
+      step=step>0?Math.ceil(step):Math.floor(step);
+      current+=step;
+      element.style.left=current+"px";
+      if(current==target){
+        clearInterval(timeId);
+      }
+      console.log("目标位置："+target+"，当前位置"+current+"，每次移动步数"+step);
+    },20)
+  }
+  //获取cloud
+  var cloud=my$("cloud");
+  //获取li
+  var list=my$("uu").children;
+  //定义被点击li的位置
+  var lastPosition=40;
+  //循环遍历为每个li注册鼠标进入、鼠标出去、点击事件
+  for(var i=0;i<list.length;i++){
+    list[i].onmouseover=mouseoverEvent;
+    list[i].onclick=clickEvent;
+    list[i].onmouseout=mouseoutEvent;
+  }
+  
+  function mouseoverEvent() {
+    hdAnimate(cloud,this.offsetLeft-10);
+  }
+  function clickEvent() {
+    lastPosition=this.offsetLeft-10;
+  }
+  function mouseoutEvent() {
+    hdAnimate(cloud,lastPosition);
+  }
+</script>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background-color: black;
+    }
+    .float-yuan{
+      width: 300px;
+      height: 300px;
+      border-radius: 150px;
+      border:2px solid white ;
+      font-size: 60px;
+      color: #00ff0c;
+      text-align: center;
+      line-height: 300px;
+      position: absolute;
+      cursor: pointer;
+    }
+    #sj{
+      left: 0;
+      top: 0;
+    }
+    #Ys{
+      right: 0;
+      top: 0;
+    }
+    #Sp{
+      left: 0;
+      top:680px;
+    }
+   #Ss{
+     right: 0;
+    top: 680px;
+   }
+    #center{
+      width: 600px;
+      height: 600px;
+      border-radius: 300px;
+      border:2px solid white ;
+      position: absolute;
+      left: 600px;
+      top:200px;
+    }
+    #uu{
+      list-style: none;
+      width: 420px;
+      height: 420px;
+      /*border: 2px solid white;*/
+      position: absolute;
+      left: 90px;
+      top:90px;
+    }
+    .minYuan{
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      border-bottom: 2px solid white;
+      position: relative;
+    }
+    #uu li{
+      display: block;
+      width: 50px;
+      height: 50px;
+      margin: 10px 0 0 10px;
+      border-radius: 25px;
+      border: 2px solid white;
+      float: left;
+      position: absolute;
+    }
+
+
+  </style>
+</head>
+<body>
+<div id="center">
+ <ul id="uu">
+   <li><a href="#"></a></li>
+   <li><a href="#"></a></li>
+   <li><a href="#"></a></li>
+   <li><a href="#"></a></li>
+   <li><a href="#"></a></li>
+   <li><a href="#"></a></li>
+   <li><a href="#"></a></li>
+   <li><a href="#"></a></li>
+   <li><a href="#"></a></li>
+ </ul>
+</div>
+  <div class="float-yuan" id="Sj">设 计</div>
+  <div class="float-yuan" id="Sp">搜 盘</div>
+  <div class="float-yuan" id="Ys">影 视</div>
+  <div class="float-yuan" id="Ss">书 籍</div>
+</body>
+<script>
+
+   var timeId=setInterval(function () {
+    var list=document.getElementById("uu").children;
+    for (var j=0;j<list.length;j++){
+//      console.log("hhh");
+      list[i].style.top=Math.random()*100+"px";
+      list[i].style.left=Math.random()*100+"px";
+    }
+  },1000);
+  var xY=document.getElementsByClassName("float-yuan");
+  console.log(xY);
+       for(var i=0;i<xY.length;i++){
+         xY[i].onmouseover=function () {
+           this.style.boxShadow=" 0 0  30px 4px #ffffff";
+           this.style.top=this.offsetTop-5+"px";
+         };
+         xY[i].onmouseout=function () {
+           this.style.boxShadow="";
+           this.style.top=this.offsetTop+5+"px";
+         };
+       }
+</script>
+
+</html>

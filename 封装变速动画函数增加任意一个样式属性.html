@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #dv{
+      width: 200px;
+      height: 200px;
+      background-color: peru;
+      position: absolute;
+    }
+    
+  </style>
+</head>
+<body>
+<input type="button" id="btn1" value="移动打400">
+<input type="button" id="btn2" value="移动打800">
+<div id="dv"></div>
+</body>
+<script src="../commn.js"></script>
+<script>
+  my$("btn1").onclick=function () {
+hdAnimate(my$("dv"),"top",400);
+  };
+  my$("btn2").onclick=function () {
+hdAnimate(my$("dv"),"top",800);
+  };
+  //获取任意元素的任意样式属性的值
+  function getStyle(element,styleArr) {
+    return  window.getComputedStyle?window.getComputedStyle(element,null)[styleArr]:element.currentStyle[styleArr];
+  }
+  function hdAnimate(element,styleArr,target) {
+    clearInterval(timeId);
+    var timeId=setInterval(function () {
+      var current=parseInt(getStyle(element,styleArr));
+      var step=(target-current)/20;
+      step=step>0?Math.ceil(step):Math.floor(step);
+      current+=step;
+      element.style[styleArr]=current+"px";
+      if(current==target){
+        clearInterval(timeId);
+      }
+        console.log("目标位置："+target+"，当前位置"+current+"，每次移动步数"+step);
+    },20)
+  }
+
+</script>
+</html>

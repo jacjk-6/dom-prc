@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    #dv{
+      width: 200px;
+      height: 200px;
+      background-color: peru;
+      left:100px;
+    }
+    
+  </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div id="dv"></div>
+
+</body>
+<script src="../commn.js"></script>
+<script>
+
+
+
+
+my$("btn").onclick=function () {
+  console.log(getStyle(my$("dv"),"left"));
+};
+
+
+//获取任意元素的任意样式属性的值
+  function getStyle(element,styleArr) {
+     return  window.getComputedStyle?window.getComputedStyle(element,null)[styleArr]:element.currentStyle[styleArr];
+    }
+
+
+
+</script>
+</html>
